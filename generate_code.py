@@ -213,7 +213,7 @@ def update_code(file: str, label: str, reformat: bool=True) -> None:
 
 def generate_onnx_converter():
     with open('ops.yml') as f:
-        cfg = yaml.load(f)
+        cfg = yaml.safe_load(f)
     infer_cfg(cfg, Target.OnnxConverter)
     for i, op in enumerate(cfg):
         ipt_opt = op['input'] + op['output']
